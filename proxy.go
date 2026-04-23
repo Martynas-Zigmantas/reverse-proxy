@@ -25,7 +25,7 @@ func main() {
         Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
             switch r.Host {
-            case "clouds.jack-sally.com":
+            case "cloud.jack-sally.com":
                 cloudProxy.ServeHTTP(w, r)
 
             case "vault.jack-sally.com":
