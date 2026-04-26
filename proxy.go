@@ -37,7 +37,7 @@ func main() {
                 metabaseProxy.ServeHTTP(w, r)
             
             case "music.jack-sally.com":
-                metabaseProxy.ServeHTTP(w, r)
+                navidromeProxy.ServeHTTP(w, r)
 
             default:
                 http.Error(w, "Forbidden", http.StatusForbidden)
