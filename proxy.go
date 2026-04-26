@@ -13,11 +13,13 @@ func main() {
     cloudBackend, _ := url.Parse("http://127.0.0.1:35547")
     vaultBackend, _ := url.Parse("http://127.0.0.1:55577")
     metabaseBackend, _ := url.Parse("http://127.0.0.1:60123")
+    navidromeBackend, _ := url.Parse("http://127.0.0.1:10337")
 
     // Create proxies ONCE
     cloudProxy := httputil.NewSingleHostReverseProxy(cloudBackend)
     vaultProxy := httputil.NewSingleHostReverseProxy(vaultBackend)
     metabaseProxy := httputil.NewSingleHostReverseProxy(metabaseBackend)
+    navidromeProxy := httputil.NewSingleHostReverseProxy(navidromeBackend)
 
     // Server
     server := &http.Server{
@@ -32,6 +34,9 @@ func main() {
                 vaultProxy.ServeHTTP(w, r)
 
             case "dash.jack-sally.com":
+                metabaseProxy.ServeHTTP(w, r)
+            
+            case "music.jack-sally.com":
                 metabaseProxy.ServeHTTP(w, r)
 
             default:
